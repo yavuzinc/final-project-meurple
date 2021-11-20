@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS reservations CASCADE;
+
+CREATE TABLE reservations (
+  id SERIAL PRIMARY KEY NOT NULL,
+  start_date DATE NOT NULL,
+  end_date DATE NOT NULL,
+  listing_id INTEGER REFERENCES listings(id) ON DELETE CASCADE,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  status BOOLEAN NOT NULL DEFAULT TRUE
+);
